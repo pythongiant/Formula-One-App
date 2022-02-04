@@ -1,0 +1,40 @@
+{
+  "name": "f",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "proj_res": "rm yarn.lock && rm -rf node_modules/ && yarn"
+  },
+  "dependencies": {
+    "@expo-google-fonts/titillium-web": "^0.2.2",
+    "@expo/vector-icons": "^12.0.0",
+    "@react-navigation/native": "^6.0.8",
+    "@react-navigation/native-stack": "^6.4.0",
+    "axios": "^0.25.0",
+    "expo": "^44.0.5",
+    "expo-asset": "~8.4.6",
+    "expo-cli": "^5.0.3",
+    "expo-linear-gradient": "^11.0.1",
+    "expo-status-bar": "~1.2.0",
+    "mobx-react-lite": "^3.2.3",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-elements": "^3.4.2",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.10.1",
+    "react-native-web": "0.17.1",
+    "react-xml-parser": "^1.1.8",
+    "x-ray": "^2.3.4",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}

@@ -1,0 +1,26 @@
+{
+  "team": [
+    "Alfa Romeo",
+    "AlphaTauri",
+    "Alpine",
+    "Aston Martin",
+    "Ferrari",
+    "Haas",
+    "McLaren",
+    "Mercedes",
+    "Red Bull",
+    "Williams"
+  ],
+  "src": [
+    "/content/dam/fom-website/teams/2022/alfa-romeo.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/alphatauri.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/teamcar-alpine.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/aston-martin.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/ferrari.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/haas-f1-team.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/teamcar-mclaren.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/mercedes.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/red-bull-racing.png.transform/4col/image.png",
+    "/content/dam/fom-website/teams/2022/williams.png.transform/4col/image.png"
+  ]
+}
