@@ -1,20 +1,20 @@
 import Gradient from '../../components/Gradient/gradient';
-import Logo from '../../components/Logo/Logo';
-import { Text,Button,Image,Icon} from 'react-native-elements';
-import { createContext, useState } from 'react';
+import {Text,Button,Image,Icon} from 'react-native-elements';
+import {useState} from 'react';
 import DriversTable from '../../components/DriversTable/Table'; 
 import ConsTable from '../../components/ConsTable/Table';
-import { View,Pressable,ActivityIndicator  } from 'react-native';
+import {View,Pressable} from 'react-native';
 import homeStyles from '../Home/styles';
 import Banner from '../../components/Banner/Banner';
+import {CarStore} from '../TokenProvider';
 
 var image = require("../../result.json")
 
 
 export default function Standings({navigation}){
-    console.log(image)
+    
     const [close, showDriver] = useState(true)
-    const [selected,changeDriver]=useState(0)
+    const selected=CarStore.useState(s=>s.index)
     
     return(
       <View style={{width:"100%",height:"100%",backgroundColor:"#fff"}}>
@@ -23,8 +23,9 @@ export default function Standings({navigation}){
               
       {!close? 
         <View style={{width:"100%",borderRadius:50,alignItems:"center"}}>
-            <Text style={{fontFamily:"TitilliumWeb_700Bold",color:"#eee",width:"50%",textAlign:"center",fontSize:20,marginTop:20}}>{image.team[selected]}</Text>
-            <Image style={{ height:150 ,width: 200,resizeMode:"contain"} } source={{uri:"https://www.formula1.com"+image.src[selected]}} PlaceholderContent={<ActivityIndicator />}/>
+            
+                <Text style={{fontFamily:"TitilliumWeb_700Bold",color:"#eee",width:"50%",textAlign:"center",fontSize:20,marginTop:20}}>{selected}</Text>
+                <Image style={{ height:150 ,width: 200,resizeMode:"contain"} } source={{uri:"https://www.formula1.com"+image.src[image.team.indexOf(selected.replace(" F1 Team",""))]}} placeholderStyle={{backgroundColor:"none"}} PlaceholderContent={<Image source={require("../../assets/placeholder.png")} style={{ height:150 ,width: 200,resizeMode:"contain"} }/>}/>
             
         </View>
           :
