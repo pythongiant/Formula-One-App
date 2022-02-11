@@ -5,11 +5,13 @@ import {
 import { useState,useEffect } from 'react';
 import XMLParser from "react-xml-parser";
 import Axios from "axios";
+import Loading from "../Loading/loading";
 
 export default function DriversTable(props){
 
   const [ ConsList,setConsList] = useState([])
   const [done,setDone] = useState(false)
+  const [selected,changeKey] = useState(0)
 
   useEffect(() => {
     
@@ -19,7 +21,9 @@ export default function DriversTable(props){
         const xml = new XMLParser().parseFromString(response["data"])
         const drivers = xml.getElementsByTagName("DriverStanding");
         const constructors = xml.getElementsByTagName("Constructor")
-      
+        if (props.topThree){
+          drivers.splice(3)
+        }
         drivers.forEach((element,i) => {
             const name = element.getElementsByTagName("GivenName")[0]["value"] +" "+(element.getElementsByTagName("FamilyName")[0]["value"]).toUpperCase()
             const position = element["attributes"]["position"]
@@ -36,9 +40,7 @@ export default function DriversTable(props){
       })
       function callback(l){
         setConsList(ConsList=>[...ConsList,l].sort((a,b)=>a[0]-b[0]))
-        if (props.topThree){
-          setConsList(ConsList=>[...ConsList].slice(0,3))
-        }
+        
         console.log(l)
       }
     }, [])
@@ -68,9 +70,7 @@ export default function DriversTable(props){
       />
       </View>
       :
-      <View>
-        <Text>Loading...</Text>
-      </View>
+      <Loading/>
     }
   </View>
   )
