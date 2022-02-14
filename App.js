@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import Home from './pages/Home/Home';
 import standings from "./pages/Standings/standings";
 import raceStandings from "./pages/RaceResult/RaceRes"
+import Schedule from './pages/Schedule/schedule';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts, TitilliumWeb_400Regular,TitilliumWeb_700Bold,TitilliumWeb_600SemiBold,TitilliumWeb_300Light_Italic,TitilliumWeb_300Light} from "@expo-google-fonts/titillium-web"
 
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} options={{ title: 'Home' ,headerShown: false}}></Stack.Screen>
           <Stack.Screen name="Standings" component={standings} options={{ title: 'Standings',headerShown: false }}></Stack.Screen>
           <Stack.Screen name="RaceRes" component={raceStandings} options={{ title: 'Race Standings',headerShown: false }}></Stack.Screen>
+          <Stack.Screen name="Schedule" component={Schedule} options={{ title: 'Race Schedule',headerShown: false }}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
        

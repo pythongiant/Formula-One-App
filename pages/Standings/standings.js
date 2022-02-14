@@ -7,6 +7,7 @@ import {View,Pressable} from 'react-native';
 import homeStyles from '../Home/styles';
 import Banner from '../../components/Banner/Banner';
 import {CarStore} from '../TokenProvider';
+import Logo from '../../components/Logo/Logo';
 
 var image = require("../../result.json")
 
@@ -32,6 +33,9 @@ export default function Standings({navigation}){
           <View>
               <Banner style={{marginTop:10}} RaceName="Gulf Air Baharain Grand Prix" Date="26th January 2022 9:30 PM IST" />
               <Button 
+              onPress={() => {
+                navigation.navigate("Schedule");
+              }}
                   title={<CalendarTitle/>}
                   buttonStyle={homeStyles.calendarButtonStyles}
                   icon={{

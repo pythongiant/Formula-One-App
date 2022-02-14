@@ -41,7 +41,6 @@ export default function DriversTable(props){
       function callback(l){
         setConsList(ConsList=>[...ConsList,l].sort((a,b)=>a[0]-b[0]))
         
-        console.log(l)
       }
     }, [])
   return(

@@ -58,8 +58,6 @@ export default function ConsTable(props) {
       });
     function callback(l) {
       setConsList((ConsList) => [...ConsList, l].sort((a, b) => a[0] - b[0]));
-
-      console.log(l);
     }
   }, []);
 

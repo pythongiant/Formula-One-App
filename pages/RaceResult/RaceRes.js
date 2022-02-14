@@ -6,14 +6,16 @@ import XMLParser from "react-xml-parser";
 import { View, FlatList } from "react-native";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import Loading from "../../components/Loading/loading";
+import Logo from '../../components/Logo/Logo';
 
 export default function Standings({ route, navigation }) {
-  const { RaceName, date } = route.params;
+  const { RaceName, date,link } = route.params;
   var [winner, setWinner] = useState([]);
   var [selectedKey, selectKey] = useState(0);
   const [done, setDone] = useState(false);
+
   useEffect(() => {
-    Axios.get("https://ergast.com/api/f1/current/last/results")
+    Axios.get(link)
       .then((response) => {
         const schedule = new XMLParser().parseFromString(response["data"]);
         const Name = schedule.getElementsByTagName("RaceName")[0]["value"];
@@ -76,7 +78,7 @@ export default function Standings({ route, navigation }) {
     <ParallaxScrollView
       backgroundColor="#414345"
       contentBackgroundColor="#fff"
-      parallaxHeaderHeight={100}
+      parallaxHeaderHeight={200}
       stickyHeaderHeight={70}
       renderStickyHeader={() => (
         <View
@@ -101,7 +103,8 @@ export default function Standings({ route, navigation }) {
       )}
       renderForeground={() => (
         <Gradient>
-          <View style={{ height: 100, marginTop: 30 }}>
+          <Logo />
+          <View style={{ height: 200, marginTop: 30 }}>
             <Text
               style={{
                 color: "#eee",

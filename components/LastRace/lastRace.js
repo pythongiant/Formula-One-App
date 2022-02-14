@@ -1,3 +1,5 @@
+// Race Result Summary Card
+
 import { Text,Button,Card} from 'react-native-elements';
 import { View} from "react-native";
 import lastRaceStyles from "./lastRaceStyles"
@@ -5,22 +7,21 @@ import Axios from 'axios';
 import XMLParser from "react-xml-parser";
 import {useEffect,useState } from "react"
 
-export default function LastRace({navigation}){
+export default function LastRace({navigation,link}){
     const [RaceData,setRaceData] = useState({})
     const [done,setDone] = useState(false)
 
     var [winner,setWinner] =useState([])
     
-    
-    
     useEffect(() => {
-        Axios.get("https://ergast.com/api/f1/current/last/results").then(
+        Axios.get(link).then(
             (response)=>{ 
         
               const schedule = new XMLParser().parseFromString(response["data"]);
               const Name = schedule.getElementsByTagName("RaceName")[0]["value"]
               const date = schedule.getElementsByTagName("Date")[0]["value"]
               var Time = schedule.getElementsByTagName("Time")[0]["value"]
+              console.log(date+"T"+Time.replace("Z",""))
               const DateObject = new Date(date+"T"+Time.replace("Z","")).getTime()
 
               Time = new Date(DateObject)
@@ -82,7 +83,7 @@ export default function LastRace({navigation}){
                     )}
                     
                         <View style={{width:"100%",borderRadius:50,alignItems:"center",marginTop:10}}>
-                            <Button onPress={()=>{navigation.navigate("RaceRes",{RaceName:RaceData.RaceName,date:RaceData.RaceDateMonth})}} title={<RaceResult/>} buttonStyle={lastRaceStyles.raceButtonStyles} icon={{name: 'arrow-right',type: 'font-awesome',size: 10,color: '#000'}} iconRight></Button> 
+                            <Button onPress={()=>{navigation.navigate("RaceRes",{RaceName:RaceData.RaceName,date:RaceData.RaceDateMonth,link:link})}} title={<RaceResult/>} buttonStyle={lastRaceStyles.raceButtonStyles} icon={{name: 'arrow-right',type: 'font-awesome',size: 10,color: '#000'}} iconRight></Button> 
                         </View>
                     </View>
                 </View>

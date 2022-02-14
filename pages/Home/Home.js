@@ -28,6 +28,9 @@ export default function Home({ navigation }) {
           />
           <Button
             title={<CalendarTitle />}
+            onPress={() => {
+              navigation.navigate("Schedule");
+            }}
             buttonStyle={homeStyles.calendarButtonStyles}
             icon={{
               name: "arrow-right",

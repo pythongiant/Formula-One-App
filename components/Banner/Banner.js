@@ -9,7 +9,7 @@ export default function Banner(props){
                 <Text style={style.text}>Next Race: <Text style={style.boldText}>{props.RaceName}</Text></Text>
                 <Text style={style.text}>Date: <Text style= {style.boldText}> {props.Date}</Text></Text>
                 
-                <Timer/>
+                <Timer date="2022-02-14" time="18:35:00"/>
             </View>
         )
     
