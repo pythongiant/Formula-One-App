@@ -6,10 +6,11 @@ import XMLParser from "react-xml-parser";
 import { View, FlatList } from "react-native";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import Loading from "../../components/Loading/loading";
-import Logo from '../../components/Logo/Logo';
+import Logo from "../../components/Logo/Logo";
+import Sticky from "../../components/StickyHeader/sticky";
 
 export default function Standings({ route, navigation }) {
-  const { RaceName, date,link } = route.params;
+  const { RaceName, date, link } = route.params;
   var [winner, setWinner] = useState([]);
   var [selectedKey, selectKey] = useState(0);
   const [done, setDone] = useState(false);
@@ -76,20 +77,12 @@ export default function Standings({ route, navigation }) {
   }, []);
   return (
     <ParallaxScrollView
-      backgroundColor="#414345"
+      backgroundColor="#232526"
       contentBackgroundColor="#fff"
       parallaxHeaderHeight={200}
       stickyHeaderHeight={70}
       renderStickyHeader={() => (
-        <View
-          style={{
-            height: 70,
-            marginTop: 30,
-            textAlign: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <Sticky style={{marginTop:30}}>
           <Text
             style={{
               color: "#eee",
@@ -99,7 +92,7 @@ export default function Standings({ route, navigation }) {
           >
             {RaceName} Results
           </Text>
-        </View>
+        </Sticky>
       )}
       renderForeground={() => (
         <Gradient>
@@ -134,7 +127,7 @@ export default function Standings({ route, navigation }) {
       ) : (
         <View>
           <FlatList
-            keyExtractor={item=>item.position}
+            keyExtractor={(item) => item.position}
             data={winner}
             renderItem={({ item: element }) => (
               <ListItem

@@ -1,11 +1,10 @@
 import Axios from "axios";
-import ParallaxScrollView from "react-native-parallax-scroll-view";
 import XMLParser from "react-xml-parser";
-import Gradient from "../../components/Gradient/gradient";
 import Logo from "../../components/Logo/Logo";
 import { useEffect } from "react";
-import { Text } from "react-native-elements";
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
+import Sticky from "../../components/StickyHeader/sticky";
+import LastRace from "../../components/LastRace/lastRace";
 
 export default function Schedule({ navigation }) {
   const year = new Date().getFullYear();
@@ -18,31 +17,10 @@ export default function Schedule({ navigation }) {
   }, [])
 
   return (
-    <ParallaxScrollView
-    backgroundColor="red"
-      parallaxHeaderHeight={1}
-      stickyHeaderHeight={70}
-      renderStickyHeader={() => (
-        <View
-          style={{
-            height: 70,
-            marginTop: 30,
-            textAlign: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Text
-            style={{
-              color: "#eee",
-              fontFamily: "TitilliumWeb_700Bold",
-              fontSize: 17,
-            }}
-          >
-            {year} Schedule
-          </Text>
-        </View>
-      )}
-    ></ParallaxScrollView>
+    <View style={{flex: 1}}>
+    <Sticky style={{backgroundColor:"#232526"}}><Logo/></Sticky>
+    <FlatList data={[{},{},{}]} renderItem={()=>( <LastRace navigation={navigation} link="https://ergast.com/api/f1/current/last/results"/>)}/>
+     
+    </View>
   );
 }

@@ -1,6 +1,5 @@
 import homeStyles from "./styles";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
-
 import { Pressable, View } from "react-native";
 import Gradient from "../../components/Gradient/gradient";
 import Logo from "../../components/Logo/Logo";
@@ -10,6 +9,7 @@ import { useState } from "react";
 import DriversTable from "../../components/DriversTable/Table";
 import ConsTable from "../../components/ConsTable/Table";
 import LastRace from "../../components/LastRace/lastRace";
+import Sticky from "../../components/StickyHeader/sticky";
 
 export default function Home({ navigation }) {
   const [close, showDriver] = useState(true);
@@ -18,9 +18,13 @@ export default function Home({ navigation }) {
     <ParallaxScrollView
       backgroundColor="#232526"
       contentBackgroundColor="#fff"
-      parallaxHeaderHeight={340}
+      parallaxHeaderHeight={330}
+      stickyHeaderHeight={80}
+      renderStickyHeader={() => (
+        <Sticky><Logo/></Sticky>
+      )}
       renderForeground={() => (
-        <Gradient>
+        <Gradient styles={{height:330}}>
           <Logo />
           <Banner
             RaceName="Gulf Air Baharain Grand Prix"

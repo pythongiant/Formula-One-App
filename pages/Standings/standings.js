@@ -5,7 +5,7 @@ import DriversTable from '../../components/DriversTable/Table';
 import ConsTable from '../../components/ConsTable/Table';
 import {View,Pressable} from 'react-native';
 import homeStyles from '../Home/styles';
-import Banner from '../../components/Banner/Banner';
+import Sticky from '../../components/StickyHeader/sticky';
 import {CarStore} from '../TokenProvider';
 import Logo from '../../components/Logo/Logo';
 
@@ -20,8 +20,7 @@ export default function Standings({navigation}){
     return(
       <View style={{width:"100%",height:"100%",backgroundColor:"#fff"}}>
           <Gradient>
-          <Pressable  onPress={()=>{navigation.navigate("Home")}}><Text style={{marginTop:30,marginLeft:10,paddingBottom:10,fontFamily:"TitilliumWeb_300Light",color:"#Eee"}}>Back</Text></Pressable>
-              
+          <Sticky><Logo/></Sticky>
       {!close? 
         <View style={{width:"100%",borderRadius:50,alignItems:"center"}}>
             
@@ -31,22 +30,7 @@ export default function Standings({navigation}){
         </View>
           :
           <View>
-              <Banner style={{marginTop:10}} RaceName="Gulf Air Baharain Grand Prix" Date="26th January 2022 9:30 PM IST" />
-              <Button 
-              onPress={() => {
-                navigation.navigate("Schedule");
-              }}
-                  title={<CalendarTitle/>}
-                  buttonStyle={homeStyles.calendarButtonStyles}
-                  icon={{
-                      name: 'arrow-right',
-                      type: 'font-awesome',
-                      size: 15,
-                      color: 'white',
-                  }}
-                  iconRight
-              ></Button>
-          </View>
+        </View>
           }
           </Gradient>
           

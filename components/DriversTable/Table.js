@@ -11,7 +11,6 @@ export default function DriversTable(props){
 
   const [ ConsList,setConsList] = useState([])
   const [done,setDone] = useState(false)
-  const [selected,changeKey] = useState(0)
 
   useEffect(() => {
     

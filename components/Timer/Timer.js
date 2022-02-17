@@ -15,7 +15,7 @@ export default function Timer(props) {
   const [showLive, setLive] = useState(false);
 
   useEffect(() => {
-    if (seconds < 0) {
+    if (offSetSeconds > 0) {
       const interval = setInterval(() => {
         offSetSeconds -= 1;
         var days = offSetSeconds / (3600 * 24); // Change to Days
