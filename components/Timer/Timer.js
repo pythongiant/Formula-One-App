@@ -38,29 +38,29 @@ export default function Timer(props) {
       {!showLive ? (
         <View style={styles.Timer}>
           <View style={styles.Time}>
-            <Text style={styles.TextB} h2>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]} h2>
               {day}
             </Text>
-            <Text style={styles.Text}>Days</Text>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]}>Days</Text>
           </View>
           <View style={styles.Time}>
-            <Text style={styles.TextB} h2>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]} h2>
               {hours}
             </Text>
-            <Text style={styles.Text}>Hours</Text>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]}>Hours</Text>
           </View>
 
           <View style={styles.Time}>
-            <Text style={styles.TextB} h2>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]} h2>
               {minutes}
             </Text>
-            <Text style={styles.Text}>Minutes</Text>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]}>Minutes</Text>
           </View>
           <View style={styles.Time}>
-            <Text style={styles.TextB} h2>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]} h2>
               {seconds}
             </Text>
-            <Text style={styles.Text}>Seconds</Text>
+            <Text style={!props.B ? [styles.Text,styles.TextB]:[styles.Text,styles.TextW]}>Seconds</Text>
           </View>
         </View>
       ) : (

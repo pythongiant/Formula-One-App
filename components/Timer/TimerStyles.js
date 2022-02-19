@@ -3,16 +3,18 @@ import { useFonts, TitilliumWeb_400Regular,TitilliumWeb_700Bold} from "@expo-goo
 
 export default StyleSheet.create({
     Timer:{
-        flexDirection:"row"
+        flexDirection:"row",
     },
     Time:{
-        paddingTop:10,
         paddingRight:20,
         alignItems:"center",
         flexDirection:"column"
     },
     TextB:{
         color:"#fff",
+    },
+    TextW:{
+        color:"#000"
     },
     Text:{
         color:"#fff",

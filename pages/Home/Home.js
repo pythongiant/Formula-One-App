@@ -109,7 +109,7 @@ export default function Home({ navigation }) {
           ></Button>
         </View>
 
-        <LastRace navigation={navigation} link="https://ergast.com/api/f1/current/last/results"/>
+        <LastRace title="Last Race" navigation={navigation} link="https://ergast.com/api/f1/current/last/results"/>
       </View>
     </ParallaxScrollView>
   );

@@ -19,17 +19,6 @@ export default function Standings({ route, navigation }) {
     Axios.get(link)
       .then((response) => {
         const schedule = new XMLParser().parseFromString(response["data"]);
-        const Name = schedule.getElementsByTagName("RaceName")[0]["value"];
-        const date = schedule.getElementsByTagName("Date")[0]["value"];
-
-        var Time =
-          schedule.getElementsByTagName("Race")[0]["children"][3]["value"];
-        const DateObject = new Date(
-          date + "T" + Time.replace("Z", "")
-        ).getTime();
-
-        Time = new Date(DateObject);
-
         var Result = schedule.getElementsByTagName("Result");
 
         Result.forEach((element, i) => {
@@ -41,7 +30,7 @@ export default function Standings({ route, navigation }) {
           const code = element["children"][0]["attributes"]["code"];
           const time = element.getElementsByTagName("Time");
           const team = element.getElementsByTagName("Name")[0]["value"];
-
+          
           typeof time[0] != "undefined"
             ? callback({
                 position: i + 1,
@@ -186,6 +175,7 @@ export default function Standings({ route, navigation }) {
                     {element.time}
                   </ListItem.Title>
                 </ListItem.Content>
+                
                 <ListItem.Content right>
                   <Text
                     style={[
