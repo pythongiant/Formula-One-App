@@ -26,14 +26,11 @@ export default function Home({ navigation }) {
       renderForeground={() => (
         <Gradient styles={{height:330}}>
           <Logo />
-          <Banner
-            RaceName="Gulf Air Baharain Grand Prix"
-            Date="26th January 2022 9:30 PM IST"
-          />
+          <Banner/>
           <Button
             title={<CalendarTitle />}
             onPress={() => {
-              navigation.navigate("Schedule");
+              navigation.replace("Schedule");
             }}
             buttonStyle={homeStyles.calendarButtonStyles}
             icon={{
@@ -95,7 +92,7 @@ export default function Home({ navigation }) {
         >
           <Button
             onPress={() => {
-              navigation.navigate("Standings");
+              navigation.replace("Standings");
             }}
             title={<RaceTitle />}
             buttonStyle={homeStyles.raceButtonStyles}

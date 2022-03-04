@@ -3,9 +3,14 @@ import { View } from "react-native";
 import { useEffect, useState } from "react";
 import styles from "./TimerStyles";
 import { Button } from "react-native-elements/dist/buttons/Button";
+import { CarStore } from "../../pages/TokenProvider";
 export default function Timer(props) {
+  var RaceDateT = CarStore.useState(s=>s.nextRaceDate)
+  var RaceTimeT = CarStore.useState(s=>s.nextRaceTime).replace("Z","");
+  const RaceDate = new Date(
+    RaceDateT + "T" + RaceTimeT.replace("Z", "")
+  ).getTime()
   const currentDate = new Date().getTime();
-  const RaceDate = new Date(props.date + "T" + props.time).getTime();
   var offSetSeconds = (RaceDate - currentDate) * 0.001; // Millisecond to second
 
   const [day, setDays] = useState(0.1);

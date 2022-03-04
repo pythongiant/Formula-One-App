@@ -1,9 +1,7 @@
 import Gradient from "../../components/Gradient/gradient";
 import { Text, ListItem } from "react-native-elements";
 import { useState, useEffect } from "react";
-import Axios from "axios";
-import XMLParser from "react-xml-parser";
-import { View, FlatList } from "react-native";
+import { View, FlatList,BackHandler } from "react-native";
 import ParallaxScrollView from "react-native-parallax-scroll-view";
 import Loading from "../../components/Loading/loading";
 import Logo from "../../components/Logo/Logo";
@@ -11,58 +9,20 @@ import Sticky from "../../components/StickyHeader/sticky";
 
 export default function Standings({ route, navigation }) {
   const { RaceName, date, link } = route.params;
-  var [winner, setWinner] = useState([]);
   var [selectedKey, selectKey] = useState(0);
-  const [done, setDone] = useState(false);
-
+  const [done,setDone] =useState(true)
   useEffect(() => {
-    Axios.get(link)
-      .then((response) => {
-        const schedule = new XMLParser().parseFromString(response["data"]);
-        var Result = schedule.getElementsByTagName("Result");
+    const backAction = () => {
+      navigation.navigate("Home")
+      return true;
+    };
 
-        Result.forEach((element, i) => {
-          const points = element["attributes"]["points"];
-          const FullName =
-            element.getElementsByTagName("GivenName")[0]["value"] +
-            " " +
-            element.getElementsByTagName("FamilyName")[0]["value"];
-          const code = element["children"][0]["attributes"]["code"];
-          const time = element.getElementsByTagName("Time");
-          const team = element.getElementsByTagName("Name")[0]["value"];
-          
-          typeof time[0] != "undefined"
-            ? callback({
-                position: i + 1,
-                name: FullName,
-                time: time[0]["value"],
-                code: code,
-                points: points,
-                team: team,
-              })
-            : callback({
-                position: i + 1,
-                name: FullName,
-                time: "DNF",
-                code: code,
-                points: points,
-                team: team,
-              });
-        });
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
 
-        //   res.forEach(element => {})
-      })
-      .then(() => {
-        setDone(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    function callback(l) {
-      // console.log(winner)
-      setWinner((winner) => [...winner, l]);
-    }
+    return () => backHandler.remove();
   }, []);
   return (
     <ParallaxScrollView
@@ -116,8 +76,8 @@ export default function Standings({ route, navigation }) {
       ) : (
         <View>
           <FlatList
-            keyExtractor={(item) => item.position}
-            data={winner}
+            keyExtractor={(item) => link.position}
+            data={link}
             renderItem={({ item: element }) => (
               <ListItem
                 containerStyle={[
