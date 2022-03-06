@@ -8,6 +8,7 @@ import XMLParser from "react-xml-parser";
 import { useEffect, useState,useRef } from "react";
 import Timer from "../Timer/Timer";
 import { Flag } from "react-native-svg-flagkit";
+import getCode from "./countryCodes";
 
 export default function LastRace({ navigation, link, title, timerT }) {
   const RaceData = useRef({})
@@ -16,7 +17,6 @@ export default function LastRace({ navigation, link, title, timerT }) {
   const winners = useRef([])
 
   function callback(l) {
-    console.log("rendered")
     winners.current=[...winners.current,l]
   }
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
         const Name = schedule.getElementsByTagName("RaceName")[0]["value"];
         const date = schedule.getElementsByTagName("Date")[0]["value"];
         var Time = schedule.getElementsByTagName("Time")[0]["value"];
+        const countryName = getCode(schedule.getElementsByTagName("Country")[0]["value"])
         const DateObject = new Date(
           date + "T" + Time.replace("Z", "")
         ).getTime();
@@ -39,6 +40,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
           RaceDate: Time.toDateString(),
           RaceDateMonth:
             Time.getFullYear() + "/" + ("0" + (Time.getMonth() + 1)).slice(-2)+ "/" + Time.getDate(),
+          RaceCountry:countryName
         }
         RaceData.current = resultObj
         var Result = schedule.getElementsByTagName("Result");
@@ -51,7 +53,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
           const code = element["children"][0]["attributes"]["code"];
           const time = element.getElementsByTagName("Time");
           const team = element.getElementsByTagName("Name")[0]["value"];
-         
+
           typeof time[0] != "undefined"
             ? callback({ position: i + 1,
               name: FullName,
@@ -99,12 +101,14 @@ export default function LastRace({ navigation, link, title, timerT }) {
           </Text>
         </View>
         <View style={{ justifyContent: "center" }}>
+        {done ?
           <Flag
-            id={"AE"}
+            id={RaceData.current.RaceCountry}
             style={{ borderRadius: "30px" }}
             width={70}
             height={40}
           />
+          : <View></View>}
         </View>
       </View>
 
@@ -162,7 +166,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
           >
             <Button
               onPress={() => {
-                navigation.replace("RaceRes", {
+                navigation.navigate("RaceRes", {
                   RaceName: RaceData.current.RaceName,
                   date: RaceData.current.RaceDateMonth,
                   link: winners.current,
