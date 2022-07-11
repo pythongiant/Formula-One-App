@@ -4,6 +4,7 @@
   <br>
   Formula One
   <br>
+  
 ![screenshot](https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/screen_recording.gif)
 
 </h1>
