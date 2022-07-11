@@ -12,6 +12,7 @@ export default function Standings({ route, navigation }) {
   var [selectedKey, selectKey] = useState(0);
   const [done,setDone] =useState(true)
   useEffect(() => {
+    console.log("rendered")
     const backAction = () => {
       navigation.navigate("Home")
       return true;

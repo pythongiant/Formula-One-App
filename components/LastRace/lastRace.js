@@ -28,6 +28,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
         const date = schedule.getElementsByTagName("Date")[0]["value"];
         var Time = schedule.getElementsByTagName("Time")[0]["value"];
         const countryName = getCode(schedule.getElementsByTagName("Country")[0]["value"])
+        
         const DateObject = new Date(
           date + "T" + Time.replace("Z", "")
         ).getTime();
@@ -42,6 +43,7 @@ export default function LastRace({ navigation, link, title, timerT }) {
             Time.getFullYear() + "/" + ("0" + (Time.getMonth() + 1)).slice(-2)+ "/" + Time.getDate(),
           RaceCountry:countryName
         }
+        console.log(countryName)
         RaceData.current = resultObj
         var Result = schedule.getElementsByTagName("Result");
         Result.forEach((element, i) => {

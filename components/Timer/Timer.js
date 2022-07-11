@@ -1,5 +1,5 @@
 import { Text } from "react-native-elements";
-import { View } from "react-native";
+import { View,Linking } from "react-native";
 import { useEffect, useState } from "react";
 import styles from "./TimerStyles";
 import { Button } from "react-native-elements/dist/buttons/Button";
@@ -13,14 +13,14 @@ export default function Timer(props) {
   const currentDate = new Date().getTime();
   var offSetSeconds = (RaceDate - currentDate) * 0.001; // Millisecond to second
 
-  const [day, setDays] = useState(0.1);
-  const [hours, setHours] = useState(0.1);
-  const [minutes, setMinutes] = useState(0.1);
-  const [seconds, setSeconds] = useState(0.1);
+  const [day, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
   const [showLive, setLive] = useState(false);
 
   useEffect(() => {
-    if (offSetSeconds > 0) {
+    if (offSetSeconds >= 0) {
       const interval = setInterval(() => {
         offSetSeconds -= 1;
         var days = offSetSeconds / (3600 * 24); // Change to Days
@@ -70,7 +70,22 @@ export default function Timer(props) {
         </View>
       ) : (
         <View>
-            <Button>Watch Live</Button>
+            <Button onPress={()=>{Linking.openURL("https://www.formula1.com/en/subscribe-to-f1-tv.html#en-IN")}} title="Watch Live " buttonStyle={{
+                  backgroundColor: '#eee',
+                  width:100,
+                  borderRadius: 20,
+                }}
+                icon={{
+                  name: 'tv',
+                  type: 'font-awesome',
+                  size: 12,
+                  color: 'black',
+                }}
+                titleStyle={{
+                  fontSize:12,
+                  color:"#000",
+                  fontFamily:"TitilliumWeb_400Regular"
+                }} />
         </View>
       )}
     </View>

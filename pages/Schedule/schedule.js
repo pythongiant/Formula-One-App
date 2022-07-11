@@ -2,7 +2,7 @@ import Axios from "axios";
 import XMLParser from "react-xml-parser";
 import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, View,BackHandler } from "react-native";
 import Sticky from "../../components/StickyHeader/sticky";
 import LastRace from "../../components/LastRace/lastRace";
 
@@ -10,6 +10,17 @@ export default function Schedule({ navigation }) {
   const [done,setDone] = useState(false)
   const DATA = [{i:-1,"title":"Next Race","link":"https://ergast.com/api/f1/current/next","timer":true}]
   useEffect(() => {
+      const backAction = () => {
+        navigation.navigate("Home")
+        return true;
+      };
+  
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+  
+    
     Axios.get("https://ergast.com/api/f1/current").then((response)=>{
       const schedule = new XMLParser().parseFromString(response["data"]);
       const races = schedule.getElementsByTagName("Race")
@@ -24,8 +35,9 @@ export default function Schedule({ navigation }) {
         }else{
           DATA.push({"i":element["attributes"]["round"],"title":"Round "+(i+1),"link":"https://ergast.com/api/f1/current/"+(i+1),"timer":false})
       }});
+  
+      return () => backHandler.remove();
     }).finally(()=>{
-        console.log("done")
         setDone(true)
     })
   }, [DATA])

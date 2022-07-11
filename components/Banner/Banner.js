@@ -17,8 +17,9 @@ export default function Banner(props){
             <View style={[style.Banner,props.style]}>
                 <Text style={style.text}>Next Race: <Text style={style.boldText}>{RaceName}</Text></Text>
                 <Text style={style.text}>Date: <Text style= {style.boldText}>{RaceDate} at {RaceTime}</Text></Text>
-                
-                <Timer/>
+                <View style={{paddingTop:10}}>
+                    <Timer/>
+                </View>
             </View>
         )
     

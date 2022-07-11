@@ -92,7 +92,7 @@ export default function Home({ navigation }) {
         >
           <Button
             onPress={() => {
-              navigation.replace("Standings");
+              navigation.navigate("Standings");
             }}
             title={<RaceTitle />}
             buttonStyle={homeStyles.raceButtonStyles}

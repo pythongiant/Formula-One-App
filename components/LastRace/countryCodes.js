@@ -2762,6 +2762,6 @@ var countries = [
     },
   ]
 export default function getCode(countryCode) {
-  console.log(countryCode)
+  
   return countries.filter(item=>item.country==countryCode).map(item=>item.iso2)[0]
 }
