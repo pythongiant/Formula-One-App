@@ -178,7 +178,6 @@ __generated__
 ### ReactNative.Android Stack ###
 # Gradle files
 .gradle/
-build/
 
 # Local configuration file (sdk path, etc)
 local.properties

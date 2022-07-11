@@ -2,11 +2,12 @@
   <br>
   <img src="https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/icon.png" alt="Formula One" width="200">
   <br>
-  Formula One App
+  Formula One
   <br>
+![screenshot](https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/screen_recording.gif)
+
 </h1>
 
-![screenshot](https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/screen_recording.gif)
 
 <h4 align="center">Formula One App to track stats.</h4>
 
