@@ -3,14 +3,17 @@
   <img src="https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/icon.png" alt="Formula One" width="200">
   <br>
   Formula One
+  
+<h4 align="center">Formula One App to track stats.</h4>
   <br>
   
-![screenshot](https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/screen_recording.gif)
-
 </h1>
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/pythongiant/Formula-One-App/master/assets/screen_recording.gif"/>
+</p>
 
-<h4 align="center">Formula One App to track stats.</h4>
+
 
 
 
@@ -40,7 +43,7 @@ $ eas build -p android  https://docs.expo.dev/build/setup/
 $ expo build:status
 ```
 ## Download
-
+You can download the compiled apk [here](https://github.com/pythongiant/Formula-One-App/releases/download/v0.0.1/f1-app-de9652a2ab2f4feaa78869ed0bd4937d-signed.apk) 
 ## License
 
 MIT
